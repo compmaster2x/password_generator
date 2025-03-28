@@ -1,23 +1,24 @@
-const passwordBox = document.getElementById("password")
-const length = 10
+const passwordG = document.getElementById("password")
+const length = 16;
 
-const upperCase = "QWERTYUIOPASDFGHJKLZXCVBNM";
-const lowerCase = 'qwertyuiopasdfhgjklzxcvbnm';
-const number = '0123456789';
-const symbol = '!@#$%^&*()_+';
+const uL = "QWERTYUIOPASDFGHJKLZXCVBNM";
+const lL = "qwertyuiopasdfghjklzxcvbnm";
+const n = "1234567890";
+const s = "!@#$%^&*()_+";
 
-const allChars = upperCase + lowerCase + number + symbol;
+const mix = uL + lL + n + s;
 
 
-function createPassword(){
-    let password = ""
-    password += upperCase[Math.floor(Math.random() * upperCase.length)]
-    password += lowerCase[Math.floor(Math.random() * lowerCase.length)]
-    password += number[Math.floor(Math.random() * number.length)]
-    password += symbol[Math.floor(Math.random() * symbol.length)]
 
+function generateRandPass(){
+    let password = "";
     while(length > password.length){
-        password += allChars[Math.floor(Math.random() * allChars.length)];
+        password += mix.charAt(Math.floor(Math.random() * mix.length))
     }
-    passwordBox.value = password;
+    passwordG.value = password
+}
+
+function copyPassword(){
+    passwordG.select();
+    document.execCommand("copy");
 }
